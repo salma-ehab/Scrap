@@ -47,7 +47,7 @@ const DELAY_INPUT = 1;
     const posts = await page.evaluate(async () => {
       let posts = [];
       var postcounter = 0;
-      let NUMBER_OF_POSTS = 100;
+      let NUMBER_OF_POSTS = 6000;
       //Scraping Data Function
       window.scrollBy(0, window.innerHeight * 10);
       function delay(time) {
@@ -189,7 +189,7 @@ const DELAY_INPUT = 1;
             });
             console.log(mydata);
             post.removepost();
-            if (posts.length < 100) await scrapData();
+            if (posts.length < 1000) await scrapData();
             else {
               return {
                 posts: posts
