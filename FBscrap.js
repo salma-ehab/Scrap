@@ -46,7 +46,7 @@ const DELAY_INPUT = 5;
           setTimeout(resolve, time);
         });
       }
-      await delay(5000);
+      await delay(2000);
 
       async function scrapData() {
         try {
@@ -56,7 +56,7 @@ const DELAY_INPUT = 5;
               setTimeout(resolve, time);
             });
           }
-          await delay(2000);
+          await delay(1000);
           
           const postListLength = document.querySelectorAll(
             'div[data-ad-preview="message"]'
@@ -126,7 +126,11 @@ const DELAY_INPUT = 5;
                   setTimeout(() => {
                     if (this.postdata.querySelector("span") === null) {
                       return resolve("");
-                    } else {
+                    } else if (typeof this.postdata.querySelector("span")=='undefined')
+                    {
+                      return resolve("");
+                    }
+                    else {
                       data["post"] = this.postdata
                         .querySelector("span")
                         .innerText.trim();
@@ -180,7 +184,7 @@ const DELAY_INPUT = 5;
             });
             console.log(mydata);
             post.removepost();
-            if (posts.length < 10000) await scrapData();
+            if (posts.length < 30) await scrapData();
             else {
               return {
                 posts: posts
